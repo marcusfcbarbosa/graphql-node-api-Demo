@@ -5,7 +5,8 @@ import { BackofficeModuleModule } from './1_modules/backoffice-module/backoffice
 import { MongooseModule } from '@nestjs/mongoose';
 import { CustomerSchema } from './1_modules/backoffice-module/2_schemas/customer.schema';
 import { UserSchema } from './1_modules/backoffice-module/2_schemas/user.schema';
-
+import { StoreModuleModule } from './1_modules/store-module/store-module.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
@@ -21,9 +22,22 @@ import { UserSchema } from './1_modules/backoffice-module/2_schemas/user.schema'
           schema: UserSchema
         }
       ]),
-    BackofficeModuleModule
+    TypeOrmModule.forRoot(
+      {
+        type: 'mysql',
+        host: '127.0.0.1',
+        port: 3306,
+        username: 'root',
+        password: 'mfcb4625',
+        database: '7180',
+        entities: [__dirname + '/**/*.entity{.ts,.js}'],
+        synchronize: true
+      }
+    ),
+    BackofficeModuleModule,
+    StoreModuleModule
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
