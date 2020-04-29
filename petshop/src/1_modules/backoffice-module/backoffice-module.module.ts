@@ -13,6 +13,7 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthService } from 'src/3_shared/services/auth.service';
 import { JwtStrategy } from 'src/3_shared/strategies/jwt.strategy';
+import { AccountController } from './1_controllers/account.controller';
 
 @Module({
   imports:
@@ -20,7 +21,7 @@ import { JwtStrategy } from 'src/3_shared/strategies/jwt.strategy';
       PassportModule.register({ defaultStrategy: 'jwt' }),
       JwtModule.register(
         {
-          secretOrPrivateKey: 'ed97d99f-fbeb-4ff9-9564-bd4ccef84a27',
+          secretOrPrivateKey: 'ed97d99f',
           signOptions: {
             expiresIn: 3600
           },
@@ -37,14 +38,16 @@ import { JwtStrategy } from 'src/3_shared/strategies/jwt.strategy';
           }
         ])],
   controllers: [
-    CustomerController,
-    AddressController,
-    PetsController],
+    AccountController
+    , CustomerController
+    , AddressController
+    , PetsController
+  ],
   providers: [
-    AccountService,
-    CustomerService,
-    AddressService,
-    PetService
+    AccountService
+    , CustomerService
+    , AddressService
+    , PetService
     , AuthService
     , JwtStrategy
   ]
