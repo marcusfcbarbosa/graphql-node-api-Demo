@@ -1,6 +1,7 @@
 import { Controller, Post, Get, UseGuards, UseInterceptors, HttpException, HttpStatus } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport'
 import { AuthService } from 'src/3_shared/services/auth.service';
+import { SharedJwtAuthGuard } from 'src/3_shared/guards/shared.auth.guard';
 
 @Controller('v1/accounts')
 export class AccountController {
@@ -13,7 +14,7 @@ export class AccountController {
     }
     
     @Get('')
-    @UseGuards(AuthGuard())
+    @UseGuards(SharedJwtAuthGuard)
     findAll() {
         //AuthGuard que guarda as informacoes armazenadas no TOKEN
         //req.user

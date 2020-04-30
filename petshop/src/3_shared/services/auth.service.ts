@@ -14,7 +14,7 @@ export class AuthService {
 
     async createToken() {
         const user: JwtPayload = { username: 'teste@gmail.com' };
-        const accessToken = this.jwtService.sign(user);
+        const accessToken = "Bearer " + this.jwtService.sign(user);
         return {
             expiresIn: 3600,
             accessToken,
