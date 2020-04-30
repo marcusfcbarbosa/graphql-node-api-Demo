@@ -15,6 +15,9 @@ export class AccountController {
     @Get('')
     @UseGuards(AuthGuard())
     findAll() {
+        //AuthGuard que guarda as informacoes armazenadas no TOKEN
+        //req.user
+
         return [];
     }
 }
