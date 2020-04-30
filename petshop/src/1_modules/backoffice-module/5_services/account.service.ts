@@ -17,15 +17,12 @@ export class AccountService {
         return await user.save();
     }
 
-    async findOneByUserName(data: string){
+    async findOneByUserName(data: string) {
         const user = new this.model(data);
         return await user.save();
     }
 
-
-
     update(data: User) {
         const user = new this.model(data);
     }
-
 }
