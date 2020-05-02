@@ -48,11 +48,16 @@ export class CustomerController {
     @UseInterceptors(new ValidatorInterceptor(new CreateCustomerContract()))
     async post(@Body() body: CreateCustomerDto) {
         try {
-            const user = await this.accountService.create(new User(body.username, body.email, body.password, true));
+            const user = await this.accountService.create(new User(
+                body.username,
+                body.email,
+                body.password,
+                true,
+                body.roles));
             const customer = new Customer(body.name, body.document, body.email, user, [], null, null, null);
             await this.customerService.create(customer);
 
-            return new Result('Inserido com sucesso', true, user, null);
+            return new Result('Inserido com sucesso', true, body.roles, null);
         } catch (error) {
             throw new HttpException(new Result('Erro ao processar requisição', false, null, error), HttpStatus.BAD_REQUEST);
         }

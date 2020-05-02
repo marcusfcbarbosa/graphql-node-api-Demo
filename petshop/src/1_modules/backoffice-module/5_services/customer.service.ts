@@ -26,13 +26,10 @@ export class CustomerService {
 
     async findAll(): Promise<Customer[]> {
         return await this.model.find({}).exec();
-
         // return await this.model.find({})
         // .sort('name')
         // .exec();//ordenando pelo nome de maneira crescente  -name (maneira decrescente)
-
         //return await this.model.find({}, 'name document email').exec();
-
         // return await this.model.find({}, '-name').exec();
     }
 
@@ -41,8 +38,7 @@ export class CustomerService {
             .populate('user', '-password')
             .exec();
     }
-
-
+    
     async query(model: QueryDto): Promise<Customer[]> {
         return await this.model
             .find(model.query,
