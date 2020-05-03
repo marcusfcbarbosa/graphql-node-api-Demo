@@ -9,6 +9,9 @@ import { UserDto } from '../6_dtos/user-dto';
 import { AuthenticateDto } from '../6_dtos/authenticate-dto';
 import { ResultDto } from 'src/1_modules/store-module/2-dtos/result.dto';
 import { AccountService } from '../5_services/account.service';
+import { ResetPasswordDto } from '../6_dtos/reset-password-dto';
+
+import { Guid } from 'guid-typescript'
 
 @Controller('v1/accounts')
 export class AccountController {
@@ -32,6 +35,26 @@ export class AccountController {
             token: token
         }, null);
     }
+
+    @Post('reset-password')
+    async resetpassword(@Body() model: ResetPasswordDto): Promise<any> {
+
+        try {
+
+            const password = Guid.create().toString().substring(0, 8).replace('-', '');
+
+            await this.accountService.update(model.document, { password: password });
+
+            return new ResultDto('uma nova senha foi enviada para o seu e-mail', true, null, null);
+
+        } catch (error) {
+            throw new HttpException(new ResultDto('Não foi possível restaurar a senha', false, null, null), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+
+
 
     // @Post('')
     // async createToken(@Body() body: UserDto): Promise<any> {
