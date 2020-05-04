@@ -17,6 +17,7 @@ import { request } from 'http';
 import { ValidatorInterceptor } from 'src/2_interceptors/validator.interceptor';
 import { ChangePasswordContract } from '../3_contracts/change-password.contract';
 
+
 @Controller('v1/accounts')
 export class AccountController {
     constructor(private authService: AuthService,

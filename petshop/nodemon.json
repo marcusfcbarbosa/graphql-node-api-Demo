@@ -5,6 +5,7 @@
   "exec": "ts-node -r tsconfig-paths/register src/main.ts",
   "env":{
     "NODE_ENV": "development",
-    "CONNECTION_STRING":"mongodb+srv://marcusfcb:mfcb4625@cluster0-8nqe9.azure.mongodb.net/test?retryWrites=true&w=majority"
+    "CONNECTION_STRING":"mongodb+srv://marcusfcb:mfcb4625@cluster0-8nqe9.azure.mongodb.net/test?retryWrites=true&w=majority",
+    "SALT_KEY":"31b5b7e7-79b3-4f98-ad19-4e58600ee3a8"
   }
 }
