@@ -13,12 +13,12 @@ export class AuthService {
         private readonly jwtService: JwtService
     ) { }
 
-    async createToken(data: Customer) {
+    async createToken(username: string, document: string, email: string, roles: String[]) {
         const user: JwtPayload = {
-            username: data.user.username,
-            document: data.document,
-            email: data.email,
-            roles: data.user.roles
+            username: username,
+            document: document,
+            email: email,
+            roles: roles
         };
         const accessToken = "Bearer " + this.jwtService.sign(user);
         return {

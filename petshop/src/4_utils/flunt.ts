@@ -26,6 +26,13 @@ export class Flunt {
             this.errors.push(message);
         }
     }
+
+    isEqual = (value1, value2, message) => {
+        if (value1 == value2) {
+            this.errors.push(message);
+        }
+    }
+
     isGreatherThan = (value, len, message) => {
         if (!value || value.length > len) {
             this.errors.push(message);

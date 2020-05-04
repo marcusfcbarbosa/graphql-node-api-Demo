@@ -7,7 +7,6 @@ export class SharedJwtAuthGuard extends AuthGuard() {
 
     canActivate(context: ExecutionContext) {
         //aqui tem acesso ao boyd, headers da requisição
-
         return super.canActivate(context);
     }
 

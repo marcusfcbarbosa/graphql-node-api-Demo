@@ -6,32 +6,23 @@ export const UserSchema = new mongoose.Schema({
         required: true,
         trim: true,
         index: {
-            unique: true
-        }
-    },
-    email: {
-        type: String,
-        required: true,
-        trim: true
+            unique: true,
+        },
     },
     password: {
         type: String,
         required: true,
-        trim: true
-    },
-    active: {
-        type: Boolean,
-        required: true,
-        default: true
+        trim: true,
     },
     roles: [{
         type: String,
         required: true,
         enum: ['user', 'admin'],
-        default:'user'
+        default: 'user'
     }],
-    createdAt: {
-        type: Date,
-        default: Date.now()
-    }
-});
+    active: {
+        type: Boolean,
+        required: true,
+        default: true,
+    },
+}, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } });

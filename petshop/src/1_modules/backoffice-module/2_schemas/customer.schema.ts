@@ -5,104 +5,110 @@ import * as mongoose from 'mongoose';
 export const CustomerSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
     },
     document: {
         type: String,
         required: true,
         trim: true,
         index: {
-            unique: true
+            unique: true,
         },
     },
     email: {
         type: String,
         required: true,
+        trim: true,
         index: {
-            unique: true
+            unique: true,
         },
     },
-    pets: [{
-        name: {
-            type: String
+    pets: [
+        {
+            id: {
+                type: String,
+            },
+            name: {
+                type: String,
+            },
+            gender: {
+                type: String,
+                enum: ['male', 'female', 'none'],
+            },
+            kind: {
+                type: String,
+            },
+            brand: {
+                type: String,
+            },
         },
-        gender: {
-            type: String,
-            enum: ['male', 'female', 'none'],
-        },
-        kind: {
-            type: String
-        },
-        brand: {
-            type: String
-        },
-    }],
+    ],
     billingAddress: {
         zipcode: {
-            type: String
+            type: String,
         },
         street: {
-            type: String
+            type: String,
         },
         number: {
-            type: String
+            type: String,
         },
         complement: {
-            type: String
+            type: String,
         },
         neighborhood: {
-            type: String
+            type: String,
         },
         city: {
-            type: String
+            type: String,
         },
         state: {
-            type: String
+            type: String,
         },
         country: {
-            type: String
-        }
+            type: String,
+        },
     },
     shippingAddress: {
         zipcode: {
-            type: String
+            type: String,
         },
         street: {
-            type: String
+            type: String,
         },
         number: {
-            type: String
+            type: String,
         },
         complement: {
-            type: String
+            type: String,
         },
         neighborhood: {
-            type: String
+            type: String,
         },
         city: {
-            type: String
+            type: String,
         },
         state: {
-            type: String
+            type: String,
         },
         country: {
-            type: String
-        }
+            type: String,
+        },
     },
     card: {
         number: {
-            type: String
+            type: String,
         },
         holder: {
-            type: String
+            type: String,
         },
         expiration: {
-            type: String
-        }
+            type: String,
+        },
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true
-    }
+        required: true,
+    },
 });
