@@ -10,7 +10,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb+srv://marcusfcb:mfcb4625@cluster0-8nqe9.azure.mongodb.net/test?retryWrites=true&w=majority'),
+    MongooseModule.forRoot(process.env.CONNECTION_STRING),
     MongooseModule.forFeature(
       [
         {
