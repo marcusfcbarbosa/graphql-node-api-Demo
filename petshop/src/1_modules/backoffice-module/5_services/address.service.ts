@@ -1,18 +1,21 @@
 import { Model } from 'mongoose';
-import { Injectable } from '@nestjs/common';
+import { Injectable, HttpService } from '@nestjs/common';
 import { Customer } from '../8_models/customer.model';
 import { InjectModel } from '@nestjs/mongoose';
-import { Addres } from '../8_models/addres.model';
+import { Address } from '../8_models/addres.model';
 import { AddressType } from '../7_enums/address-type.enum';
 
 @Injectable()
 export class AddressService {
     //Toda vez que criar uma instancia do serviço, ele ja cria uma instancia do Model por padrão
     //Singlton a nivel de classe e nao de aplicacao
-    constructor(@InjectModel('Customer') private readonly model: Model<Customer>) {
+    constructor(
+        @InjectModel('Customer') private readonly model: Model<Customer>,
+        private readonly httpService: HttpService
+    ) {
     }
 
-    async create(document: string, data: Addres, type: AddressType): Promise<Customer> {
+    async create(document: string, data: Address, type: AddressType): Promise<Customer> {
         const options = { upsert: true };//caso nao encontre o registro ele inseri um novo, se tive atualiza
         if (type == AddressType.Billing) {
             return await this.model.findOneAndUpdate(
@@ -35,4 +38,9 @@ export class AddressService {
         }
     }
 
+    getAddressByZipCode(zipcode: string) {
+        const url = `https://viacep.com.br/ws/${zipcode}/json/`;
+        //Nest usa o axios para fazer essa requisição e nao trabaljha com assincronismo
+        return this.httpService.get(url);
+    }
 }
