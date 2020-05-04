@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, Param, Body, UseInterceptors, HttpException, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, Body, UseInterceptors, HttpException, HttpStatus, CacheInterceptor } from '@nestjs/common';
 import { Customer } from '../8_models/customer.model';
 import { Result } from '../8_models/result.model';
 import { ValidatorInterceptor } from 'src/2_interceptors/validator.interceptor';
@@ -46,6 +46,7 @@ export class CustomerController {
 
 
     @Post()
+    @UseInterceptors(CacheInterceptor)
     @UseInterceptors(new ValidatorInterceptor(new CreateCustomerContract()))
     async post(@Body() body: CreateCustomerDto) {
         try {

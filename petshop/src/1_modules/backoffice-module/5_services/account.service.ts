@@ -34,7 +34,7 @@ export class AccountService {
             return null;
         }
     }
-
+    
     async update(username: string, data: any): Promise<User> {
         return await this.userModel.findOneAndupdate({ username }, data);
     }

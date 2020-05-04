@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, CacheModule } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CustomerSchema } from './2_schemas/customer.schema';
 import { UserSchema } from './2_schemas/user.schema';
@@ -18,6 +18,7 @@ import { AccountController } from './1_controllers/account.controller';
 @Module({
   imports:
     [
+      CacheModule.register({ stdTTL: 100, checkperiod: 120 }),
       PassportModule.register({ defaultStrategy: 'jwt' }),
       JwtModule.register(
         {
