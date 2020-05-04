@@ -25,6 +25,7 @@ export class CustomerController {
     }
 
     @Get()
+    @UseInterceptors(CacheInterceptor)//cacheando requisições de get
     async get() {
         try {
             const customers = await this.customerService.findAll();
@@ -46,7 +47,6 @@ export class CustomerController {
 
 
     @Post()
-    @UseInterceptors(CacheInterceptor)
     @UseInterceptors(new ValidatorInterceptor(new CreateCustomerContract()))
     async post(@Body() body: CreateCustomerDto) {
         try {
