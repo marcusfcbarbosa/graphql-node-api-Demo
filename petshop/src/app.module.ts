@@ -7,6 +7,7 @@ import { CustomerSchema } from './1_modules/backoffice-module/2_schemas/customer
 import { UserSchema } from './1_modules/backoffice-module/2_schemas/user.schema';
 import { StoreModuleModule } from './1_modules/store-module/store-module.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AgendaModule } from './1_modules/agenda/agenda.module';
 
 @Module({
   imports: [
@@ -35,7 +36,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       }
     ),
     BackofficeModuleModule,
-    StoreModuleModule
+    StoreModuleModule,
+    AgendaModule
   ],
   controllers: [AppController],
   providers: [AppService],
