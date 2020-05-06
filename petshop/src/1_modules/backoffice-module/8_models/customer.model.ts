@@ -1,7 +1,7 @@
 'use strict'
 
 import { Pet } from './pet.model';
-import { Address } from './addres.model';
+import { Address } from './address.model';
 import { CreditCard } from './CreditCard.model';
 import { User } from './user.model';
 

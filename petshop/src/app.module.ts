@@ -11,17 +11,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 @Module({
   imports: [
     MongooseModule.forRoot(process.env.CONNECTION_STRING),
-    MongooseModule.forFeature(
-      [
-        {
-          name: 'Customer',
-          schema: CustomerSchema
-        },
-        {
-          name: 'User',
-          schema: UserSchema
-        }
-      ]),
     TypeOrmModule.forRoot(
       {
         type: 'mysql',

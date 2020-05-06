@@ -2,7 +2,7 @@ import { Controller, Post, Param, Body, UseInterceptors, HttpException, HttpStat
 import { Result } from '../8_models/result.model';
 import { ValidatorInterceptor } from 'src/2_interceptors/validator.interceptor';
 import { CreateAddressContract } from '../3_contracts/create-address.contract';
-import { Address } from '../8_models/addres.model';
+import { Address } from '../8_models/address.model';
 import { AddressService } from '../5_services/address.service';
 import { AddressType } from '../7_enums/address-type.enum';
 

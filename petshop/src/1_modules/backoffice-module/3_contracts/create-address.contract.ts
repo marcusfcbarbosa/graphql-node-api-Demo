@@ -2,13 +2,13 @@
 import { IContract } from 'src/3_shared/icontract';
 import { Flunt } from 'src/4_utils/flunt';
 import { Injectable } from '@nestjs/common';
-import { Addres } from '../8_models/addres.model';
+import { Address } from '../8_models/address.model';
 
 //Com  essa adequação vc torna a classe injetavel nos interceptadores de rota
 @Injectable()
 export class CreateAddressContract implements IContract {
     errors: any[];
-    validate(model: Addres): boolean {
+    validate(model: Address): boolean {
         const flunt = new Flunt();
         flunt.hasMinLen(model.city, 3, 'Cidade necessita de pelo menos 3 caracteres');
         flunt.hasMinLen(model.state, 2, 'Estado necessita de pelo menos 2 caracteres');

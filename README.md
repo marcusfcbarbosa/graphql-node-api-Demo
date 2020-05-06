@@ -1,1 +1,0 @@
-# graphql-node-api-Demo
