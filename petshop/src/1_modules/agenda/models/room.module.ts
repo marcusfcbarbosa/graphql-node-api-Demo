@@ -1,5 +1,6 @@
 import { AggregateRoot } from '@nestjs/cqrs';
-//import { RoomBookEvent } from '../events/room-booked.event';
+import { RoomBokedEvent } from '../events/room-booked.event';
+
 
 export class Room extends AggregateRoot {
 
@@ -9,6 +10,10 @@ export class Room extends AggregateRoot {
 
     //os casos de uso ficam aqui!!
     book(customerId: string) {
+
         
+        
+        //ao finalizar um processamento, dispara um evento
+        this.apply(new RoomBokedEvent(customerId, this.id));
     }
 }
