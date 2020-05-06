@@ -9,5 +9,6 @@ export class Room extends AggregateRoot {
 
     //os casos de uso ficam aqui!!
     book(customerId: string) {
+        
     }
 }

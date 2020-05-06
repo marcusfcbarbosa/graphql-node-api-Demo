@@ -6,6 +6,7 @@
   "env":{
     "NODE_ENV": "development",
     "CONNECTION_STRING":"mongodb+srv://marcusfcb:mfcb4625@cluster0-8nqe9.azure.mongodb.net/test?retryWrites=true&w=majority",
-    "SALT_KEY":"31b5b7e7-79b3-4f98-ad19-4e58600ee3a8"
+    "SALT_KEY":"31b5b7e7-79b3-4f98-ad19-4e58600ee3a8",
+    "SECRET_KEY":"1ccbee79-173d-4234-bb08-1e4f5c3e21e4"
   }
 }
